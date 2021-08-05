@@ -12,9 +12,12 @@ public class C206_CaseStudyTest {
 	private Currency c2;
 	private currencyHolding h1;
 	private currencyHolding h2;
+	private currencyHoldingRate chr1;
+	private currencyHoldingRate chr2;
 	
 	private ArrayList<Currency> currencyList;
 	private ArrayList<currencyHolding> currencyHoldingList;
+	private ArrayList<currencyHoldingRate> currencyHoldingRate = new ArrayList<currencyHoldingRate>();
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -28,9 +31,12 @@ public class C206_CaseStudyTest {
 		c2 = new Currency("MYR", "Malaysia", 0.32, 3.13);
 		h1 = new currencyHolding("SGD", 1);
 		h2 = new currencyHolding("MYR",3);
+		chr1 = new currencyHoldingRate("SGD", 100000.00, "Singapore", 1.00, 3.00);
+		chr2 = new currencyHoldingRate("MYR", 100000.00, "Malaysia", 0.32, 3.13);
 
 		currencyList= new ArrayList<Currency>();
 		currencyHoldingList = new ArrayList<currencyHolding>();
+		currencyHoldingRate = new ArrayList<currencyHoldingRate>();
 	}
 
 	
@@ -187,6 +193,30 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	public void retrieveAllcurrencyHoldingRate() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", currencyHoldingRate);
+		
+		//test if the list of currency retrieved from the CurrencyList is empty - boundary
+		String allCurrency= C206_CaseStudy.retrieveAllcurrencyHoldingRate(currencyHoldingRate);
+		String testOutput = "";
+		assertEquals("Check that ViewAllCurrencylist", testOutput, allCurrency);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addCurrencyHoldingRate(currencyHoldingRate, chr1);
+		C206_CaseStudy.addCurrencyHoldingRate(currencyHoldingRate, chr2);
+		assertEquals("Test that Currency arraylist size is 2", 2, currencyHoldingRate.size());
+		
+		
+		//test if the expected output string same as the list of currency retrieved from the SourceCentre	
+		allCurrency = C206_CaseStudy.retrieveAllCurrency(currencyList);
+		testOutput = String.format("%-20s %-20s %-10.2f %-12.2f \n", "SGD", "Singapore", 1.00, 3.00);
+		testOutput += String.format("%-20s %-20s %-10.2f %-12.2f \n", "MYR", "Malaysia", 0.32, 3.13);
+	
+		assertEquals("Test that ViewAllCamcorderlist", testOutput, allCurrency);
+		
+	}
+	
 	
 	@After
 	public void tearDown() throws Exception {
@@ -194,8 +224,17 @@ public class C206_CaseStudyTest {
 		c2 = null;
 		h1 = null;
 		h2 = null;
+		chr1 = null;
+		chr2 = null;
 		currencyList = null;
 		currencyHoldingList = null;
+		currencyHoldingRate = null;
 	}
+	
+	
+	
+	
+	
+	
 
 }

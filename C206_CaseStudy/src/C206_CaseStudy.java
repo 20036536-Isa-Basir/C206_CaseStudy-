@@ -8,13 +8,20 @@ public class C206_CaseStudy {
 
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 		ArrayList<currencyHolding> currencyHoldingList = new ArrayList<currencyHolding>();
+		ArrayList<currencyHoldingRate> currencyHoldingRate = new ArrayList<currencyHoldingRate>();
 
 
 		currencyList.add(new Currency("SGD", "Singapore", 1.00, 3.00));
 		currencyList.add(new Currency("MYR", "Malaysia", 0.32, 3.13));
 		
-		currencyHoldingList.add(new currencyHolding("Singapore", 1));
-		currencyHoldingList.add(new currencyHolding("Malaysia", 1));
+		currencyHoldingList.add(new currencyHolding("Singapore", 100000.00));
+		currencyHoldingList.add(new currencyHolding("Malaysia", 100000.00));
+		
+		
+		currencyHoldingRate.add(new currencyHoldingRate("SGD", 100000.00, "Singapore", 1.00, 3.00));
+		currencyHoldingRate.add(new currencyHoldingRate("MYR", 100000.00, "Malaysia", 0.32, 3.13));
+		
+		
 
 		int option = 0;
 
@@ -48,13 +55,19 @@ public class C206_CaseStudy {
 				
 			} else if (option == 7) {
 				C206_CaseStudy.setHeader("DELETE");
+			} else if (option == 8) {
+				C206_CaseStudy.viewAllcurrencyHoldingRate(currencyHoldingRate);
+				
 			}
+			
+		
 
 			else if (option == OPTION_QUIT) {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
 			}
+			
 
 		}
 
@@ -68,6 +81,8 @@ public class C206_CaseStudy {
 		System.out.println("4. Update Currency");
 		System.out.println("5. Display Currency Holdings");
 		System.out.println("6. Add Currency Holdings");
+		System.out.println("7. Delete Currency Holdings");
+		System.out.println("8. Display the Currency Holdings converted SGD value based on SELL RATE");
 		System.out.println("12. Quit");
 		Helper.line(80, "-");
 
@@ -223,12 +238,35 @@ public class C206_CaseStudy {
 		return ch;
 
 	}
+	
+	public static currencyHoldingRate inputcurrencyHoldingRate() {
+		String ISO = Helper.readString("Enter Currency ISO > ");
+		double amtofHoldings = Helper.readDouble("Enter Amount of Holdings > ");
+		String name = Helper.readString("Enter Currency Name > ");
+		double buy = Helper.readDouble("Enter Buy Rate > ");
+		double sell = Helper.readDouble("Enter Sell Rate > ");
+
+		currencyHoldingRate chr = new currencyHoldingRate(ISO, amtofHoldings, name, buy, sell);
+		return chr;
+		
+	}
+	
+	
 
 	public static void addCurrencyHolding(ArrayList<currencyHolding> currencyHoldingList, currencyHolding ch) {
 
 		currencyHoldingList.add(ch);
 		System.out.println("Currency Holdings added");
+		
 	}
+	
+	public static void addCurrencyHoldingRate(ArrayList<currencyHoldingRate> currencyHoldingRate, currencyHoldingRate chr) {
+
+		currencyHoldingRate.add(chr);
+		System.out.println("Currency Holdings added");
+		
+	}
+	
 	public static boolean doDeleteCurrencyHolding(ArrayList<currencyHolding> currencyHoldingList, String iso) {
 
 		boolean isDelete = false;
@@ -259,5 +297,31 @@ public class C206_CaseStudy {
 			System.out.println("Currency " + iso + " is deleted");
 		}
 	}
+	//View how much money company is currently holding in various currencies & display its converted SGD value based on SELL RATE 
+	
+	public static String retrieveAllcurrencyHoldingRate(ArrayList<currencyHoldingRate> currencyHoldingRate) {
+		String output = "";
+
+		for (int i = 0; i < currencyHoldingRate.size(); i++) {
+
+			output += String.format("%-20s %-20.2f %-12.2f \n", currencyHoldingRate.get(i).getCurrencyISO(), currencyHoldingRate.get(i).getAmtofHoldings(),
+					  currencyHoldingRate.get(i).getSellRate());
+		}
+		return output;
+	}
+
+	public static void viewAllcurrencyHoldingRate(ArrayList<currencyHoldingRate> currencyHoldingRate) {
+		C206_CaseStudy.setHeader("Holding List with Sell Rates");
+		String output = String.format("%-20s %-20s %-12s \n", "CURRENCY ISO", "HOLDING RATE", "SELL RATE");
+		output += retrieveAllcurrencyHoldingRate(currencyHoldingRate);
+		System.out.println(output);
+	}
+	
+	
+	
+		
+	
+	
+
 
 }
