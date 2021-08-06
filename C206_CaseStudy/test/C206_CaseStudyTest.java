@@ -218,6 +218,52 @@ public class C206_CaseStudyTest {
 	}
 	
 	
+	
+	
+	@Test
+	     public void dosearchCurrencyRate() {
+		// Test if Item list is not null -boundary
+		
+	    assertNotNull("Test if there is valid Currency arraylist to retrieve keyword", currencyList);
+		
+	  
+	    
+	}
+	
+	
+	@Test
+    public void doconvertCurrencySell() {
+		assertNotNull("Test if there is valid Currency arraylist to retrieve keyword", currencyList);
+	}
+	
+	
+	@Test
+    public void doconvertCurrencyBuy() {
+		assertNotNull("Test if there is valid Currency arraylist to retrieve keyword", currencyList);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@After
 	public void tearDown() throws Exception {
 		c1 = null;
