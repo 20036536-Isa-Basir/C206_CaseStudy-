@@ -647,6 +647,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
+	
 	// option 14 View Buy Transaction
 	public static void viewAllBuyTransaction(ArrayList<BuyTransaction> buyTransactionList) {
 

@@ -9,7 +9,6 @@ public class BuyTransaction {
 	public BuyTransaction(int id, String iso, String iso_out, double amount_out, String date) {
 
 		this.id = id;
-
 		this.date = date;
 		this.iso_out = iso_out;
 		this.iso = iso;

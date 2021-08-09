@@ -211,6 +211,7 @@ public class C206_CaseStudyTest {
 
 	}
 
+	
 	public void retrieveAllcurrencyHoldingRate() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", currencyHoldingRate);
