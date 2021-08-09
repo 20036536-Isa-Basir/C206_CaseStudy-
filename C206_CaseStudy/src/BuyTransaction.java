@@ -7,7 +7,7 @@ public class BuyTransaction {
 	private int id;
 
 	public BuyTransaction(int id, String iso, String iso_out, double amount_out, String date) {
-
+		super();
 		this.id = id;
 		this.date = date;
 		this.iso_out = iso_out;

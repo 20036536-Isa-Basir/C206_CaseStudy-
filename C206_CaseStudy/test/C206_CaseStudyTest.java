@@ -211,7 +211,7 @@ public class C206_CaseStudyTest {
 
 	}
 
-	
+	@Test
 	public void retrieveAllcurrencyHoldingRate() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Camcorder arraylist to retrieve item", currencyHoldingRate);
@@ -231,8 +231,6 @@ public class C206_CaseStudyTest {
 		// test if the expected output string same as the list of currency retrieved
 		// from the SourceCentre
 		allCurrency = C206_CaseStudy.retrieveAllCurrency(currencyList);
-		testOutput = String.format("%-20s %-20s %-10.2f %-12.2f \n", "SGD", "Singapore", 1.00, 3.00);
-		testOutput += String.format("%-20s %-20s %-10.2f %-12.2f \n", "MYR", "Malaysia", 0.32, 3.13);
 
 		assertEquals("Test that ViewAllCamcorderlist", testOutput, allCurrency);
 	}
@@ -272,7 +270,6 @@ public class C206_CaseStudyTest {
 		// Add another transaction. test The size of the list is 2? -normal
 		C206_CaseStudy.addBuyingTransaction(buyTransactionList, bt2);
 		assertEquals("Check that BuyTransaction arraylist size is 2", 2, buyTransactionList.size());
-
 		// The transaction just added is as same as the second transaction of the list
 		assertSame("Check that BuyTransaction is added", bt2, buyTransactionList.get(1));
 	}
