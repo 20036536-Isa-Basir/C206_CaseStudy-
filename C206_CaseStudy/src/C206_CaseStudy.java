@@ -523,7 +523,7 @@ public class C206_CaseStudy {
 
 	}
 
-	// option 12
+	// option 12 Record Buy Transaction
 	public static BuyTransaction inputBuy(BuyTransaction bt, ArrayList<Currency> currencyList,
 			ArrayList<currencyHolding> HoldingList) {
 
@@ -579,7 +579,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// option 13
+	// option 13 Record Buy Transaction
 	public static SellTransaction inputSell(SellTransaction st, ArrayList<Currency> currencyList,
 			ArrayList<currencyHolding> HoldingList) {
 
@@ -647,7 +647,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	// option 14
+	// option 14 View Buy Transaction
 	public static void viewAllBuyTransaction(ArrayList<BuyTransaction> buyTransactionList) {
 
 		C206_CaseStudy.setHeader("ALL TRANSACTION RECORDS FOR 'BUY'");

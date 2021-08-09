@@ -271,6 +271,7 @@ public class C206_CaseStudyTest {
 		// Add another transaction. test The size of the list is 2? -normal
 		C206_CaseStudy.addBuyingTransaction(buyTransactionList, bt2);
 		assertEquals("Check that BuyTransaction arraylist size is 2", 2, buyTransactionList.size());
+
 		// The transaction just added is as same as the second transaction of the list
 		assertSame("Check that BuyTransaction is added", bt2, buyTransactionList.get(1));
 	}
